@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "preserveSymlinks": true,
+    "types": [
+      "@aeria-ui/ui/vue",
+      "unplugin-vue-router/client"
+    ]
+  },
+  "include": [
+    "@types/*.d.ts",
+    "src",
+    ".aeria-ui/*.d.ts"
+  ]
+}

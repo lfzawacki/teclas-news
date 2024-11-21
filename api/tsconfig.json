@@ -1,0 +1,12 @@
+{
+    "extends": "@aeriajs/cli/config/tsconfig.json",
+    "compilerOptions": {
+        "outDir": "dist",
+        "preserveSymlinks": true
+    },
+    "include": [
+        "@types/*.d.ts",
+        ".aeria/aeria.d.ts",
+        "src"
+    ]
+}

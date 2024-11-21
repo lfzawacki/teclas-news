@@ -1,0 +1,6 @@
+.env
+production.env
+dist
+node_modules
+api/release
+

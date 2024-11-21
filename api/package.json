@@ -1,0 +1,37 @@
+{
+  "name": "api",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "src/index.ts",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "build": "aeria -c",
+    "build:icons": "aeria -i",
+    "build:post": "aeria -mik",
+    "dev": "aeria -w",
+    "start": "node --import aeria/loader ./dist/index.js"
+  },
+  "aeriaSdk": {
+    "publicUrl": {
+      "development": "http://localhost:3000/api"
+    },
+    "storage": {
+      "strategy": "localStorage",
+      "namespace": "aeria"
+    },
+    "mirrorPaths": [
+      ".aeria",
+      "../web/.aeria-ui"
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aeria": "^0.0.213",
+    "aeria-sdk": "^0.0.154"
+  }
+}

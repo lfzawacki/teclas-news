@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo
+    restart: always
+    volumes:
+      - /data/db:/data/db
+    logging:
+      driver: none
+
+  api:
+    build:
+      context: api
+    restart: always
+    depends_on:
+      - mongo
+    volumes:
+      - api-build:/opt/application/api-build
+      - api-storage:/data/storage
+    env_file: api/production.env
+    healthcheck:
+      test: curl -s -w '%{http_code}' http://localhost:3000/api/describe
+      timeout: 5s
+      interval: 10s
+
+  web:
+    build:
+      context: web
+    depends_on:
+      api:
+        condition: service_healthy
+    volumes:
+      - api-build:/opt/application/api
+      - web-build:/var/www/html
+
+  nginx:
+    build:
+      context: nginx
+    restart: always
+    depends_on:
+      - web
+    ports:
+      - 80:80
+    volumes:
+      - web-build:/var/www/html
+
+volumes:
+  api-build:
+  web-build:
+  api-storage:
+

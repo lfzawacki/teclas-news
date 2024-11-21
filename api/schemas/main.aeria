@@ -1,0 +1,30 @@
+collection File extends aeria.file {}
+collection TempFile extends aeria.tempFile {}
+collection User extends aeria.user {
+  properties {
+    roles []enum @values([
+      "root",
+      "supervisor",
+      "customer"
+    ])
+  }
+}
+
+collection Post {
+  owned true
+  properties {
+    title str
+    link str
+    body str @element("textarea")
+    replies []Post @inline
+  }
+  presets {
+    crud
+  }
+  functions {
+    get @expose
+    getAll @expose
+    remove @expose
+    insert @expose
+  } 
+}

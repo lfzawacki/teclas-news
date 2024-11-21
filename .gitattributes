@@ -1,0 +1,6 @@
+# ignore husky hooks
+.husky/* linguist-vendored
+
+# ignore scripts
+scripts/*.js linguist-vendored
+

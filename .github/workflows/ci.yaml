@@ -1,0 +1,26 @@
+name: Continuos Integration
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: npm
+      - name: Install dependencies
+        run: npm install
+      - name: Build packages
+        run: |
+          (cd api; npm run build)
+          (cd api; npm run build:icons)
+          (cd web; npm run build:ci)
+
